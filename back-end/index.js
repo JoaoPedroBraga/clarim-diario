@@ -4,6 +4,29 @@ const usuarioModel = require('./src/module/usuario/usuario.moldel');
 const app = express();
 app.use(express.json());
 
+app.post('/login', async (req, res) => {
+    if (!req.body.email){
+        return res.status(400).json({ message: "O campo email e obrigtório"})   
+    }
+    if (!req.body.senha){
+        return res.status(400).json({ message: "O campo senha e obrigtório"})
+    }
+
+    const usuarioExistente = await usuarioModel.findOne({email: req.body.email});
+
+    if (!usuarioExistente) {
+        return res.status(400).json({ message: "Usuario não cadastrado"})
+    }
+
+    const senhaVerificada = bcrypt.compareSync(req.body.senha, usuarioExistente.senha);
+
+    if (!senhaVerificada) {
+        return res.status(400).json({ message: "Email ou senha incorretamente"});
+    }
+
+    return res.status(200).json({ message: 'Login realizado com sucesso'});
+})
+
 app.get('/usuarios', async (req, res) => {
     const usuarios = await usuarioModel.find({});
     return res.status(200).json(usuarios);
@@ -17,8 +40,8 @@ app.post('/usuarios', async (req, res) => {
         return res.status(400).json({ message: "O campo senha e obrigtório"})
     }
 
-    //TODO verificar se o usuario ja existe na base
     const usuarioExistente = await usuarioModel.find({email: req.body.email});
+    
     if (usuarioExistente.length) {
         return res.status(400).json({ message: "usuarioExistente"})
     }
