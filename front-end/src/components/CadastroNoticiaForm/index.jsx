@@ -1,28 +1,48 @@
-'use cliente'
+'use client'
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 import { useState } from "react"
 
 const CadastroNoticiaForm = () => {
-    const [title, setTitle] = useState('');
+    const router = useRouter();
+    const [title, setTitle] = useState();
     const [img, setImg] = useState('');
     const [texto, setTexto] = useState('');
+    const [categoria, setCategoria] = useState('');
 
-    const aoSubmeter = (e) => {
+    const aoSubmeter = async (e) => {
         e.preventDefault();
-        console.log('Submeteu', title, img, texto);
+        try {
+            const form = {
+                title,
+                img,
+                texto,
+                categoria,
+            }
+            const result = await axios.post('http://localhost:8080/noticias', form);
+            alert('Nova Noticia Cadastrada');
+            return  router.push('/home')
+        } catch (erro) {
+            alert(erro.response.data.message);
+        }
+        
     }
     const aoAlterarValores = (e) => {
         const {name, value} = e.target;
-        if (name === 'title') {
+        if (name == 'title') {
             setTitle(value);
         }
 
-        if (name === 'img') {
+        if (name == 'img') {
             setImg(value);
         }
 
-        if (name === 'texto') {
+        if (name == 'texto') {
             setTexto(value);
+        }
+        if (name == 'categoria') {
+            setCategoria(value);
         }
     };
   return (
@@ -37,7 +57,18 @@ const CadastroNoticiaForm = () => {
         </div>
         <div>
             <label htmlFor="texto">Texto</label>
-            <input type="text" name="texto" onChange={aoAlterarValores}/>
+            <textarea type="text" name="texto" onChange={aoAlterarValores}/>
+        </div>
+        <div>
+            <label htmlFor="categoria">Categoria</label>
+            <select name='categoria' onChange={aoAlterarValores}>
+                <option value="produto">Escolha a categoria</option>
+                <option value="politica">Politica</option>
+                <option value="produto">Produto</option>
+                <option value="tecnolgia">Tecnologia</option>
+                <option value="RH">RH</option>
+                <option value="vendas">Vendas</option>
+            </select>
         </div>
 
         <button type="submit">Criar Noticia</button>    

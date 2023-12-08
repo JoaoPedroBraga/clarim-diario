@@ -1,6 +1,7 @@
 'use client'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react';
+
 import './style.css'
 
 const Menu = () => {
@@ -18,9 +19,11 @@ const Menu = () => {
                 <div className='menu-lateral'>
                     <div className='fechar' onClick={() =>setMenuLateral(!menuLateral)}> x </div>
                     <ul>
-                        <li>Item 1</li>
-                        <li>Item </li>
-                        <li>Item 3</li>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/noticias/produto">Produto</a></li>
+                        <li><a href="noticias/tecnologia">Tecnologia</a></li>
+                        <li><a href="noticias/rh">RH</a></li> 
+                        <li><a href="noticias/vendas">Vendas</a></li>
                     </ul>
                 </div>
 

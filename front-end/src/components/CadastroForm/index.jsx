@@ -1,15 +1,28 @@
 'use client';
+import axios from 'axios';
+import { useRouter } from 'next/navigation';
 import { useState } from "react";
 
 const CadastroForm = () => {
+    const router = useRouter();
     const [nome, setNome] = useState('')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
 
-    const aoSubmeter = (e) => {
+    const aoSubmeter = async (e) => {
        e.preventDefault();
-       // TODO enviar para o servidor
-       console.log(`Submit, \n ${nome}, \n ${email}, \n ${senha}`)
+       try {
+            const form = {
+                nome,
+                email,
+                senha
+            }
+            const result = await axios.post('http://localhost:8080/usuarios', form);
+            alert('Usuario cadastrado');
+            router.push('/admin/noticias/criar')
+        } catch (erro) {
+        
+        }
     }
 
     const aoAlterarValores = (e) => {
