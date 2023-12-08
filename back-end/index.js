@@ -104,6 +104,6 @@ app.post('/noticias', async (req, res) => {
 });
 
 app.listen(8080, () => {
-    console.log('Servidor na funcionando na porta 8080');
+    console.log('Servidor funcionando na porta 8080');
 });
 

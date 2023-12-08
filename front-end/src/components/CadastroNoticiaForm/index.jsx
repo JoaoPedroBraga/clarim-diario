@@ -62,11 +62,10 @@ const CadastroNoticiaForm = () => {
         <div>
             <label htmlFor="categoria">Categoria</label>
             <select name='categoria' onChange={aoAlterarValores}>
-                <option value="produto">Escolha a categoria</option>
-                <option value="politica">Politica</option>
+                <option value="escolha">Escolha a categoria</option>
                 <option value="produto">Produto</option>
-                <option value="tecnolgia">Tecnologia</option>
-                <option value="RH">RH</option>
+                <option value="tecnologia">Tecnologia</option>
+                <option value="rh">RH</option>
                 <option value="vendas">Vendas</option>
             </select>
         </div>

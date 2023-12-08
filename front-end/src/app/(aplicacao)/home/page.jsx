@@ -4,25 +4,24 @@ import axios from 'axios';
 import  Noticia  from '../../../components/Noticias/index.jsx';
 
 const HomePage = () => {
-
   const [noticias, setNoticias] = useState([]);
 
   const getNoticias = async () => {
-    try{
-      const result = await axios.post('http://localhost:8080/noticias');
+    try {
+      const result = await axios.get('http://localhost:8080/noticias');
       setNoticias(result.data);
-    }catch(error){  
-      alert(error.response.data.message);
+    }catch(erro){
+      alert(erro.response.data.message);
     }
   }
 
   useEffect(() => {
-    getNoticias();
+    getNoticias()
   }, []);
 
   return (
     <div>
-      <h1 style={{padding:'10px 0'}}>Home</h1>
+      <h1 >Home</h1>
       {noticias.map(noticia => 
         <Noticia key={noticia.id} noticia={noticia}/>
       )}

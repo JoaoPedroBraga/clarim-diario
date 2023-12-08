@@ -21,9 +21,9 @@ const Menu = () => {
                     <ul>
                         <li><a href="/home">Home</a></li>
                         <li><a href="/noticias/produto">Produto</a></li>
-                        <li><a href="noticias/tecnologia">Tecnologia</a></li>
-                        <li><a href="noticias/rh">RH</a></li> 
-                        <li><a href="noticias/vendas">Vendas</a></li>
+                        <li><a href="/noticias/tecnologia">Tecnologia</a></li>
+                        <li><a href="/noticias/rh">RH</a></li>
+                        <li><a href="/noticias/vendas">Vendas</a></li>
                     </ul>
                 </div>
 
