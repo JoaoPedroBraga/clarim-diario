@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import  Noticia  from '../../../components/Noticias/index.jsx';
 
+import './style.css';
+
 const HomePage = () => {
   const [noticias, setNoticias] = useState([]);
 
@@ -21,7 +23,7 @@ const HomePage = () => {
 
   return (
     <div>
-      <h1 >Home</h1>
+      <h1 style={{padding: '10px 0', textAlign:'center'}}>Home</h1>
       {noticias.map(noticia => 
         <Noticia key={noticia.id} noticia={noticia}/>
       )}

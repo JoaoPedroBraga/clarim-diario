@@ -4,20 +4,21 @@
     align-items: center;
     height: 55px;
     background-color: white ;
-    color: red;
+    color: #fccd07;
     padding:auto 13px ;
 }
 .menu button{
     background: transparent;
-    color: red;
+    color: #fccd07;
     border: none;
     cursor: pointer;
+    margin: auto 15px;
 }
 .menu-lateral{
     height: 100vh;
     width: 200px;
     background-color: white;
-    color: red;
+    color: #fccd07;
     position: fixed;
     top: 0%;
     left: 0%;
@@ -26,4 +27,32 @@
     display: flex;
     justify-content: end;
     cursor: pointer;
+}
+.menu .login{
+    padding: 8px 16px;
+    background-color: #fccd07;
+    color: #333;
+    border-radius: 3px;
+    font-weight: bolder;
+}
+.menu .logo,
+.menu .btn-menu{
+    font-weight: bolder;
+    font-size: 31px;
+}
+.menu-lateral .fechar{
+    font-size: 20px;
+    font-weight: bold;
+}
+.menu-lateral li{
+    list-style: none;
+    margin-left: 31px;
+    margin-top: 15px;
+    font-weight: bolder;
+    transition: .3s;
+    color: #333;
+}
+.menu-lateral li:hover{
+    color: #fccd07;
+    text-decoration: underline;
 }

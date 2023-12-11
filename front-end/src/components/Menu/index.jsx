@@ -2,6 +2,7 @@
 import { useRouter } from 'next/navigation'
 import { useState } from 'react';
 
+
 import './style.css'
 
 const Menu = () => {
@@ -10,9 +11,9 @@ const Menu = () => {
     return(
         <>
             <nav className='menu'>
-                <button onClick={() =>setMenuLateral(!menuLateral)}>Menu</button>
-                <div>Logo</div>
-                <button onClick={() => router.push('/login')}>Login</button>
+                <button className='btn-menu' onClick={() =>setMenuLateral(!menuLateral)}>Menu</button>
+                <div className='logo'>Logo</div>
+                <button className='login' onClick={() => router.push('/login')}>Login</button>
             </nav>
         
             { menuLateral &&
