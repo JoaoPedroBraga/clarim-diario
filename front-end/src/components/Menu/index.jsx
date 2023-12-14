@@ -12,7 +12,7 @@ const Menu = () => {
         <>
             <nav className='menu'>
                 <button className='btn-menu' onClick={() =>setMenuLateral(!menuLateral)}>Menu</button>
-                <div className='logo'>Logo</div>
+                <div className='logo'>Clarin Diario</div>
                 <button className='login' onClick={() => router.push('/login')}>Login</button>
             </nav>
         

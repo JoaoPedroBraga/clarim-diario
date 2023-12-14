@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import  Noticia  from '../../../components/Noticias/index.jsx';
+import LateralEsquerdo from '@/components/LateralEsquerdo/index.jsx';
+import LateralDireito from '@/components/LateralDireito/index.jsx';
 
 import './style.css';
 
@@ -17,16 +19,31 @@ const HomePage = () => {
     }
   }
 
+  const getNoticiasPopular = () => { 
+    if(noticias){
+      return noticias.find(noticia => noticia.isPopular);
+    }
+  }
+
+  const getNoticiasUltima = () => { 
+    if(noticias){
+      return noticias.filter(noticia => noticia.isUltima);
+    }
+  }
+
   useEffect(() => {
     getNoticias()
   }, []);
 
   return (
-    <div>
-      <h1 style={{padding: '10px 0', textAlign:'center'}}>Home</h1>
-      {noticias.map(noticia => 
-        <Noticia key={noticia.id} noticia={noticia}/>
-      )}
+    <div className='grid-home'>
+      {getNoticiasPopular() && <LateralEsquerdo noticia={getNoticiasPopular()}/>}
+      <div>
+        {noticias.map(noticia => 
+          <Noticia key={noticia.id} noticia={noticia}/>
+        )}
+      </div>
+      {getNoticiasUltima() && <LateralDireito noticias={getNoticiasUltima()}/>}
     </div>
   )
 }

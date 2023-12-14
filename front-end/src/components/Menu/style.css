@@ -22,6 +22,7 @@
     position: fixed;
     top: 0%;
     left: 0%;
+    z-index: 1;
 }
 .menu-lateral .fechar{
     display: flex;
@@ -43,6 +44,7 @@
 .menu-lateral .fechar{
     font-size: 20px;
     font-weight: bold;
+
 }
 .menu-lateral li{
     list-style: none;
